@@ -6,10 +6,13 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthServiceProvider {
+
   isLoggedIn:boolean=false;
   constructor(public afAuth: AngularFireAuth, public toastCtrl:ToastController) {
     console.log('Hello AuthServiceProvider Provider');
   }
+
+  isRegisterSucces:boolean=false;
 
   loginWithGoogle(){
     return this.afAuth.auth
@@ -32,8 +35,9 @@ export class AuthServiceProvider {
   }
 
   register(email:string, passwword:string){
-    this.afAuth.auth.createUserWithEmailAndPassword(email,passwword).then((result)=>{
+    return this.afAuth.auth.createUserWithEmailAndPassword(email,passwword).then((result)=>{
       console.log("register result", result);
+      this.isRegisterSucces=true;
     }).catch((error)=>{
       this.displayError(error, "Error during register.");
     })

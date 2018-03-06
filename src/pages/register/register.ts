@@ -16,7 +16,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class RegisterPage {
 
-  user={email:"", password:"", password2:""}
+  user = { email: "", password: "", password2: "" }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthServiceProvider, private toastCtrl: ToastController) {
   }
@@ -25,15 +25,20 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  register(){
-    if(this.user.password === this.user.password2){
-      this.authService.register(this.user.email, this.user.password)
+  register() {
+    if (this.user.password === this.user.password2) {
+      this.authService.register(this.user.email, this.user.password).then(() => {
+        if (this.authService.isRegisterSucces) {
+          this.authService.isRegisterSucces = false;
+          this.navCtrl.pop();
+        }
+      })
     }else{
       this.presentToast("Passwords need to be identical.");
     }
   }
 
-  presentToast(message:string) {
+  presentToast(message: string) {
     let toast = this.toastCtrl.create({
       message: message,
       duration: 3000,
@@ -41,9 +46,9 @@ export class RegisterPage {
     });
 
     toast.onDidDismiss(() => {
-      console.log('Dismissed toast',message);
+      console.log('Dismissed toast', message);
     });
-  
+
     toast.present();
   }
 
