@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -7,12 +7,19 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  pizzas=[];
+
+  constructor(public navCtrl: NavController, private events:Events) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
+
+    this.events.subscribe("tabsNavigateToAbout",((pizza)=>{
+      this.pizzas.push(pizza);
+      console.log("currently in cart", this.pizzas);
+    }))
   }
 
 }

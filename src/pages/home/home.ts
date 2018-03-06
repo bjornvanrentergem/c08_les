@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -7,7 +7,19 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  pizza={
+    title:"my awesome pizza",
+    toppings:[{
+      id:1,
+      name:"pineapple"
+    },{
+      id:1,
+      name:"mushrooms"
+    }
+  ]
+  }
+
+  constructor(public navCtrl: NavController, private events:Events) {
 
   }
 
@@ -16,7 +28,10 @@ export class HomePage {
   }
 
   about(){
-    this.navCtrl.parent.select(1);
+    this.events.publish("tabsNavigateToAbout",this.pizza);
+
+    //navigate to other tab  using parent
+    //this.navCtrl.parent.select(1);
   }
 
 }
