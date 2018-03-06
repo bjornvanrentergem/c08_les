@@ -11,4 +11,12 @@ export class HomePage {
 
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+  }
+
+  about(){
+    this.navCtrl.parent.select(1);
+  }
+
 }
