@@ -16,17 +16,26 @@ export class AuthServiceProvider {
     .signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
+  displayError(error:any, message:string){
+    console.log("message",error);
+    this.presentToast(error.message);
+    this.isLoggedIn=false;
+  }
+
   login(email:string,password:string){
-    return this.afAuth.auth
-    .signInWithEmailAndPassword(email,password)
-    .then((result)=>{
+    return this.afAuth.auth.signInWithEmailAndPassword(email,password).then((result)=>{
       console.log("login result",result);
       this.isLoggedIn= true;
+    }).catch((error)=>{
+      this.displayError(error, "Error during login.");
     })
-    .catch((error)=>{
-      console.log("Error during login",error);
-      this.presentToast(error.message);
-      this.isLoggedIn=false;
+  }
+
+  register(email:string, passwword:string){
+    this.afAuth.auth.createUserWithEmailAndPassword(email,passwword).then((result)=>{
+      console.log("register result", result);
+    }).catch((error)=>{
+      this.displayError(error, "Error during register.");
     })
   }
 
