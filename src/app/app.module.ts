@@ -15,6 +15,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 
+import { UserServiceProvider } from '../providers/user-service/user-service';
+
 var config = {
   apiKey: "AIzaSyBlnry96mnCWX8RdIiEIp6CQsj-KsYRgGc",
   authDomain: "c08les-7ab40.firebaseapp.com",
@@ -50,7 +52,8 @@ var config = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserServiceProvider
   ]
 })
 export class AppModule {}
