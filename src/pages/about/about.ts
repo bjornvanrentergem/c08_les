@@ -16,10 +16,10 @@ export class AboutPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
 
-    this.events.subscribe("tabsNavigateToAbout",((pizza)=>{
+    this.events.subscribe("addPizzaToCart",((pizza)=>{
       this.pizzas.push(pizza);
       console.log("currently in cart", this.pizzas);
-    }))
+    }));
   }
 
 }

@@ -24,7 +24,9 @@ export class TabsPage {
 
     this.events.subscribe("tabsNavigateToAbout", (pizza)=>{
       //this.navCtrl.push(AboutPage);
-      this.tabs.select(1)
+      this.tabs.select(1).then(()=>{
+        this.events.publish("addPizzaToCart", pizza);
+      });
     })
   }
   

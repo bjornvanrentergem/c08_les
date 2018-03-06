@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { TabsPage } from '../tabs/tabs';
 import { RegisterPage } from '../register/register';
+import { RestaurantPage } from '../restaurant/restaurant';
 
 /**
  * Generated class for the LoginPage page.
@@ -36,7 +37,7 @@ export class LoginPage {
       console.log("AuthService replied with",result);
       if (this.authService.isLoggedIn) {
         // if auth success, go to home
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.setRoot(RestaurantPage);
       }
     });
   }
