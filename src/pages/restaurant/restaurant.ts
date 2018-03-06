@@ -31,11 +31,11 @@ export class RestaurantPage {
       console.log("Didn't get any data", error);
     });
     
-    let store = {
+    /*let store = {
       name:"New pizza store"
     }
 
-    this.db.update("0", store);
+    this.db.update("0", store);*/
   }
   
 
