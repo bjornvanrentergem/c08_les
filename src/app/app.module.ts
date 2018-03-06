@@ -15,7 +15,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 
-import { UserServiceProvider } from '../providers/user-service/user-service';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 var config = {
   apiKey: "AIzaSyBlnry96mnCWX8RdIiEIp6CQsj-KsYRgGc",
@@ -53,7 +53,7 @@ var config = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserServiceProvider
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
